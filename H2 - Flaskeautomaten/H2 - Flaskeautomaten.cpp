@@ -12,18 +12,15 @@ int main()
 
     // Create a producer and two consumers
     Producer producer;
-    Consumer waterConsumer = Consumer(waterBuffer);
-    Consumer beerConsumer = Consumer(beerConsumer);
+    Consumer waterConsumer = Consumer("Water");
+    Consumer beerConsumer = Consumer("Beer");
     Splitter splitter;
 
     // Start a thread for each consumer and the producer 
     std::thread producerThread(&Producer::Produce, &producer);
     std::thread splitterThread(&Splitter::Run, &splitter);
-    std::thread waterConsumerThread(&Consumer::Consume, &waterConsumer, &waterBufferLock, &waterBufferConditionVariable);
-    std::thread beerConsumerThread(&Consumer::Consume, &beerConsumer, &beerBufferLock, &beerBufferConditionVariable);
-
-    // start a water consumer thread that passes the waterBufferLock and waterBufferConditionVariable to the consume function as parameters
-    std::thread waterConsumerThreadWithParameters([waterConsumer] {waterConsumer.Consume(waterBufferLock, waterBufferConditionVariable);});
+    std::thread waterConsumerThread(&Consumer::Consume, &waterConsumer);
+    std::thread beerConsumerThread(&Consumer::Consume, &beerConsumer);
 
     while (true) {
         system("CLS");
@@ -35,9 +32,9 @@ int main()
         // Bottles in beer buffer
         std::cout << "Bottles in beer buffer: " << beerBuffer.GetBufferQueue().size() << std::endl;
         // Consumed water bottles
-         std::cout << "Consumed water bottles: " << waterConsumer.GetConsumedBottles() << std::endl;
+         std::cout << "Consumed water bottles: " << waterConsumer.GetConsumedWaterBottles() << std::endl;
         // Consumed beer bottles
-        std::cout << "Consumed beer bottles: " << beerConsumer.GetConsumedBottles() << std::endl;
+        std::cout << "Consumed beer bottles: " << beerConsumer.GetConsumedBeerBottles() << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 

@@ -4,13 +4,14 @@
 class Consumer
 {
 public:
-	Consumer(Buffer buffer) : Buffer(buffer) {}
+	Consumer(std::string type) : type(type) {}
 	~Consumer() {}
-	void Consume(std::mutex mtx, std::condition_variable cv);
-	int GetConsumedBottles() { return consumedBottles; }
+	void Consume();
+	int GetConsumedWaterBottles() { return consumedWaterBottles; }
+	int GetConsumedBeerBottles() { return consumedBeerBottles; }
 
 private:
-	// The buffer to consume from 
-	Buffer Buffer;
-	int consumedBottles = 0;
+	std::string type;
+	inline static int consumedWaterBottles = 0;
+	inline static int consumedBeerBottles = 0;
 };
