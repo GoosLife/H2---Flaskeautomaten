@@ -139,7 +139,7 @@
     <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Consumer.h" />
-    <ClInclude Include="GlobalBuffers.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="Producer.h" />
     <ClInclude Include="Splitter.h" />
   </ItemGroup>

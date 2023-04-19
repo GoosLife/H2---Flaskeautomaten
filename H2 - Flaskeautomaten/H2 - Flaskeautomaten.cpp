@@ -1,5 +1,5 @@
 #include "Buffer.h"
-#include "GlobalBuffers.h"
+#include "Globals.h"
 #include "Consumer.h"
 #include "Producer.h"
 #include "Splitter.h"

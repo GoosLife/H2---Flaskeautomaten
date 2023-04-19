@@ -1,5 +1,5 @@
 #include "Producer.h"
-#include "GlobalBuffers.h"
+#include "Globals.h"
 #include <condition_variable>
 #include <mutex>
 

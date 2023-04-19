@@ -1,5 +1,5 @@
 #include "Consumer.h"
-#include "GlobalBuffers.h"
+#include "Globals.h"
 #include "Buffer.h"
 
 // Take a bottle from the buffer and consume it
@@ -21,7 +21,7 @@ void Consumer::Consume() {
 					std::string bottleType = waterBuffer.RemoveBottle();
 
 					// Consume the bottle
-					consumedWaterBottles++;
+					consumedWaterBottles.fetch_add(1);
 
 					return true;
 
@@ -44,7 +44,7 @@ void Consumer::Consume() {
 					std::string bottleType = beerBuffer.RemoveBottle();
 
 					// Consume the bottle
-					consumedBeerBottles++;
+					consumedBeerBottles.fetch_add(1);
 
 					return true;
 

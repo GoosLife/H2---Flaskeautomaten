@@ -5,31 +5,28 @@
 #include <mutex>
 #include <queue>
 
-#define MAX_SIZE 10; // Set the max size of the buffer
+#define MAX_SIZE 10 // Set the max size of the buffer
+
+/// <summary>
+/// The buffer class that handles the buffer for the water and beer bottles.
+/// This class has been replaced by the ArrayBuffer class, which uses an array as the buffer instead of a queue.
+/// </summary>
 class Buffer
 {
 public:
 	Buffer() {}
 	~Buffer() {}
+
+	// Add and remove bottles from the buffer
 	void AddBottle(std::string bottleType);
 	std::string RemoveBottle();
+
+	// Getters
 	bool IsEmpty() { return BufferQueue.empty(); }
 	int GetSize() { return (int)BufferQueue.size(); }
 	bool IsFull() { return BufferQueue.size() == maxSize; }
 
-	// std::queue<std::string> GetBufferQueue() { return BufferQueue; }
-
 private:
-	std::queue<std::string> BufferQueue;
+	std::queue<std::string> BufferQueue; // Allocate the buffer
 	int maxSize = MAX_SIZE; // Set the max size of the buffer
 };
-
-// Create condition variables for the producer and consumers to use when accessing the buffers
-inline std::condition_variable waterBufferConditionVariable;
-inline std::condition_variable beerBufferConditionVariable;
-inline std::condition_variable globalBufferConditionVariable;
-
-// Create locks for the buffers and consumers to use when accessing the buffers
-inline std::mutex waterBufferLock;
-inline std::mutex beerBufferLock;
-inline std::mutex globalBufferLock;

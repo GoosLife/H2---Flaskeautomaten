@@ -1,6 +1,6 @@
 #include "Splitter.h"
 #include "Buffer.h"
-#include "GlobalBuffers.h"
+#include "Globals.h"
 #include <queue>
 #include <string>
 
