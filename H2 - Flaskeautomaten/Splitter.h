@@ -1,11 +1,17 @@
 #pragma once
+
+/// <summary>
+/// Splitter class that handles the splitting of bottles.
+/// </summary>
 class Splitter
 {
 public:
 	Splitter() {}
 	~Splitter() {}
 
-	// While run is running, the splitter will split the bottles
+	/// <summary>
+	/// While run is running, the splitter will split the bottles
+	/// </summary>
 	void Run();
 private:
 	// Counters for how many bottles the splitter needs to split (the splitter stores the bottles as a simple integer value, as  opposed to the buffer which stores them in an array

@@ -8,7 +8,7 @@
 /// Buffer class that handles the buffer for the water and beer bottles,
 /// using an array as the buffer instead of a queue making it faster.
 /// </summary>
-class ArrayBuffer : public Buffer // Inherit from Buffer
+class ArrayBuffer : public Buffer
 {
 public:
 	ArrayBuffer() {}
@@ -24,8 +24,8 @@ public:
 	bool IsFull() { return size == maxSize; } // Check if the buffer is full
 
 private:
-		std::string buffer[MAX_SIZE]; // Allocate the buffer 
+		std::string buffer[MAX_SIZE]; // Allocate the buffer to the max size of the buffer (defined in Buffer.h)
 		int size = 0; // Set the current size of the buffer (effectively the index of the last element in the buffer)
-		int maxSize = MAX_SIZE; // Set the max size of the buffer (defined in Buffer.h)
+		int maxSize = MAX_SIZE; // Set the max size of the buffer
 };
 

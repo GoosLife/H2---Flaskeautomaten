@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
 
+/// <summary>
+/// Producer class that handles the production of bottles.
+/// </summary>
 class Producer
 {
 public:

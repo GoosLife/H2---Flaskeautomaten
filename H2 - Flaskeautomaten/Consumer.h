@@ -2,6 +2,9 @@
 #include "Buffer.h"
 #include "Globals.h"
 
+/// <summary>
+/// Consumer class that handles the consumption of bottles from the buffer.
+/// </summary>
 class Consumer
 {
 public:
