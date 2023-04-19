@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ArrayBuffer.cpp" />
     <ClCompile Include="Buffer.cpp" />
     <ClCompile Include="Consumer.cpp" />
     <ClCompile Include="H2 - Flaskeautomaten.cpp" />
@@ -135,8 +136,10 @@
     <ClCompile Include="Splitter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ArrayBuffer.h" />
     <ClInclude Include="Buffer.h" />
     <ClInclude Include="Consumer.h" />
+    <ClInclude Include="GlobalBuffers.h" />
     <ClInclude Include="Producer.h" />
     <ClInclude Include="Splitter.h" />
   </ItemGroup>

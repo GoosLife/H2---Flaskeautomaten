@@ -1,5 +1,6 @@
 #include "Splitter.h"
 #include "Buffer.h"
+#include "GlobalBuffers.h"
 #include <queue>
 #include <string>
 
@@ -22,7 +23,7 @@ void Splitter::Run()
 }
 
 void Splitter::SplitBottles() {
-	for (int i = 0; i < globalBuffer.GetBufferQueue().size(); i++) {
+	for (int i = 0; i < globalBuffer.GetSize(); i++) {
 		std::string bottle = globalBuffer.RemoveBottle();
 		if (bottle == "Water") {
 			amountOfWaters++;
@@ -38,6 +39,11 @@ void Splitter::SplitBeer() {
 	beerBufferConditionVariable.wait(uniqueBeerLock, [this] {
 		int times = amountOfBeers; // This is needed because amountOfBeers is decremented in the for loop
 		for (int i = 0; i < times; i++) {
+			if (beerBuffer.IsFull())
+			{
+				break; // Stop and move the rest of the bottles next time
+			}
+
 			beerBuffer.AddBottle("Beer");
 			amountOfBeers--;
 		}
@@ -52,6 +58,11 @@ void Splitter::SplitWater() {
 	waterBufferConditionVariable.wait(uniqueWaterLock, [this] {
 		int times = amountOfWaters; // This is needed because amountOfWaters is decremented in the for loop
 		for (int i = 0; i < times; i++) {
+			if (waterBuffer.IsFull())
+			{
+				break; // Stop and move the rest of the bottles next time
+			}
+
 			waterBuffer.AddBottle("Water");
 			amountOfWaters--;
 		}

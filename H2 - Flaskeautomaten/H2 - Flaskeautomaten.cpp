@@ -1,4 +1,5 @@
 #include "Buffer.h"
+#include "GlobalBuffers.h"
 #include "Consumer.h"
 #include "Producer.h"
 #include "Splitter.h"
@@ -26,11 +27,11 @@ int main()
         system("CLS");
         // Output status of the producer/consumer threads
         // Bottles in global buffer
-        std::cout << "Bottles in global buffer: " << globalBuffer.GetBufferQueue().size() << std::endl;
+        std::cout << "Bottles in global buffer: " << globalBuffer.GetSize() << std::endl;
         // Bottles in water buffer
-        std::cout << "Bottles in water buffer: " << waterBuffer.GetBufferQueue().size() << std::endl;
+        std::cout << "Bottles in water buffer: " << waterBuffer.GetSize() << std::endl;
         // Bottles in beer buffer
-        std::cout << "Bottles in beer buffer: " << beerBuffer.GetBufferQueue().size() << std::endl;
+        std::cout << "Bottles in beer buffer: " << beerBuffer.GetSize() << std::endl;
         // Consumed water bottles
          std::cout << "Consumed water bottles: " << waterConsumer.GetConsumedWaterBottles() << std::endl;
         // Consumed beer bottles

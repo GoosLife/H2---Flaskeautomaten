@@ -1,4 +1,5 @@
 #include "Consumer.h"
+#include "GlobalBuffers.h"
 #include "Buffer.h"
 
 // Take a bottle from the buffer and consume it
@@ -11,14 +12,13 @@ void Consumer::Consume() {
 			waterBufferConditionVariable.wait(waterUniqueLock, [this]
 				{
 					// If the buffer is empty, wait for a new bottle
-					if (waterBuffer.GetBufferQueue().empty())
+					if (waterBuffer.IsEmpty())
 					{
 						return true;
 					}
 
 					// Get the next bottle from the buffer
-					std::string bottleType = waterBuffer.GetBufferQueue().front();
-					waterBuffer.GetBufferQueue().pop();
+					std::string bottleType = waterBuffer.RemoveBottle();
 
 					// Consume the bottle
 					consumedWaterBottles++;
@@ -35,14 +35,13 @@ void Consumer::Consume() {
 			beerBufferConditionVariable.wait(beerUniqueLock, [this]
 				{
 					// If the buffer is empty, wait for a new bottle
-					if (beerBuffer.GetBufferQueue().empty())
+					if (beerBuffer.IsEmpty())
 					{
 						return true;
 					}
 
 					// Get the next bottle from the buffer
-					std::string bottleType = beerBuffer.GetBufferQueue().front();
-					beerBuffer.GetBufferQueue().pop();
+					std::string bottleType = beerBuffer.RemoveBottle();
 
 					// Consume the bottle
 					consumedBeerBottles++;
