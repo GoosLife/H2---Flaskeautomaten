@@ -36,10 +36,15 @@ int main()
          std::cout << "Consumed water bottles: " << waterConsumer.GetConsumedWaterBottles() << std::endl;
         // Consumed beer bottles
         std::cout << "Consumed beer bottles: " << beerConsumer.GetConsumedBeerBottles() << std::endl;
+        // Updating the console once per second is more than enough for human readability
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
 
+    // Join the threads
     producerThread.join();
+    splitterThread.join();
+    waterConsumerThread.join();
+    beerConsumerThread.join();
 
     // Wait for user input before exiting
     char c;

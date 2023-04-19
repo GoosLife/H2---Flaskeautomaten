@@ -3,6 +3,10 @@
 #include <condition_variable>
 #include <mutex>
 
+// Header file to store globally used variables
+// This is done to avoid having to pass the variables as parameters to the functions
+// It is not the prettiest solution, but it works for this project
+
 // Create condition variables for the producer and consumers to use when accessing the buffers
 inline std::condition_variable waterBufferConditionVariable;
 inline std::condition_variable beerBufferConditionVariable;

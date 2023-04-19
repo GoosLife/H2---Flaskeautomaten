@@ -1,20 +1,23 @@
 #include "ArrayBuffer.h"
 
+// Add the bottle to the buffer
 void ArrayBuffer::AddBottle(std::string bottleType)
 {
-	// Add the bottle to the buffer
 	buffer[size] = bottleType;
 	size++;
 }
 
+// Remove bottle from the buffer
 std::string ArrayBuffer::RemoveBottle()
 {
-	// Remove bottle from the buffer
-	std::string bottle = buffer[0];
+	std::string bottle = buffer[0]; // Get the first element in the buffer
+
 	for (int i = 0; i < size; i++)
 	{
-		buffer[i] = buffer[i + 1];
+		buffer[i] = buffer[i + 1]; // Shift the elements in the buffer to the left
 	}
-	size--;
+	
+	size--; // Decrement the size of the buffer (as we removed an element)
+	
 	return bottle;
 }
